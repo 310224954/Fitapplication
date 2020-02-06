@@ -5,17 +5,13 @@ from django.urls import reverse
 from django.template.defaultfilters import slugify
 from datetime import date
 
-# food_types = (
-#   ("1", "Meat"),
-#   ("2", "Fruit"),
-#   ("3", "Vegetable"), 
-#   ("4", "SeaFood"),
-#   ("5", "Nuts"),
-#   ("6", "Grains"),
-#   ("7", "Diary")
-# )
 
 class Products(models.Model):
+    """
+        Class created for single, raw products contains
+        all nutrition information.
+
+    """
     name = models.CharField(max_length=50)
     protein = models.FloatField()
     carbohydrates = models.FloatField()
@@ -23,7 +19,6 @@ class Products(models.Model):
     description = models.TextField(blank=True)
     quantity = models.IntegerField(blank=True)
     price = models.DecimalField(max_digits=100, decimal_places=2, blank=True)
-    #date = models.TimeField(default=date.today)
     date = models.TimeField(auto_now_add=True)  
     food_type = models.CharField(max_length=6, choices=(
         ("1", "Meat"),
@@ -42,7 +37,7 @@ class Products(models.Model):
    )
 
     class Meta:
-        ordering = ["name"] #order by its name descending order
+        ordering = ["name"] 
 
     def save(self, *args, **kwargs):
         self.fat = round(self.fat, 1)
@@ -54,7 +49,7 @@ class Products(models.Model):
         super(Products, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.name}"#"{} - {}".format(self.name, self.get_food_type_display())
+        return f"{self.name}"
 
     @property
     def name_type(self):
@@ -73,12 +68,18 @@ class Products(models.Model):
         return short_description
         
     def get_absolute_url(self):
-        return reverse("prod_desc", kwargs={"pk":self.pk})#, "slug":self.slug
+        return reverse("prod_desc", kwargs={"pk":self.pk})
         
 
 
 
 class Meals(models.Model):
+    """
+        Class for more complex food items, like whole dishes, meals. 
+        Data about their nurtition is pulled from Products class objects.
+
+    """
+
     name = models.CharField(max_length=40)
     ingredient = models.ManyToManyField(Products, related_name="products")
     description = models.TextField(blank=True, max_length=750)
@@ -124,7 +125,6 @@ class Meals(models.Model):
 
     @property   
     def diet_category(self):
-        #diet_types = ["vegan", "vegeterian", "Keto", "Paleo", "Gluten-free"]
         diet_types = "vegan, vegeterian, Keto, Paleo, Gluten-free"
         food_types = ""
         for ing in self.ingredient.all():
