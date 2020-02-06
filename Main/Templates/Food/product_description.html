@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	   <div class="container">
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="col-md-12">
+            <center>
+                {{msg}}
+            </center>           
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    </br>
+
+	<div class="post">
+        <h2>{{object.name|lower|capfirst}}</h2>
+        <br><br>       
+        <p>{{ object.description }}</p>
+        <br><br>
+        <p>{{ object.protein }} in 100 grams of product.</p>      
+        <p>{{ object.carbohydrates }} in 100 grams of product.</p> 
+        <p>{{ object.fat }}  in 100 grams of product.</p>   
+        <p>{{ object.quantity }} grams per portion.</p>        
+    </div>
+    <br><br><br><br><br>
+	<button class="btn btn-secondary mr-1" type="submit">
+		<a class="Update-button" href="{% url 'prod_update' object.pk %}">Edit</a>
+	</button>
+        <button class="btn btn-danger ml-1" type="submit">
+        <a class="Update-button" href="{% url 'prod_delete' object.pk %}">Delete</a>
+    </button>
+
+
+{% endblock %}

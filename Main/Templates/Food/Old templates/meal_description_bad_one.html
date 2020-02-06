@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+	<h1>{{ Meals.name}}</h1>
+
+	{% for element in obj %}
+	
+		<h1> {{element.name|lower|capfirst}} </h1>	
+		<p> {{element.protein}} </p> 
+		<p> {{element.carbohydrates }} </p>
+		<p> {{element.fat }} </p>
+		<p> {{element.diet_category }} </p>
+		<p> {{element.ingredients }} </p>
+
+	{% endfor %}
+
+{% endblock %}

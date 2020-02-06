@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="container">
+		{% if messages %}
+			{% for msg in messages %}
+				<div class="col-md-12">
+					<center>
+						{{msg}}
+					</center>			
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+	</br>
+
+	<table class="table table-striped table-dark">
+		<thead>
+			<tr>
+				<th scope="col">Meal name</th>
+				<th scope="col">Proteins</th>
+				<th scope="col">Carbohydrates</th>
+				<th scope="col">Fat</th>				
+				<th scope="col">Weight</th>
+				<th scope="col">Add</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for element in object %}
+				
+					<tr>
+						<td>
+							<a class="hyperlink-off" href="{% url 'meal_detail' pk=element.pk %}">{{ element.name|lower|capfirst }}</a>							
+						</td>
+						<td>{{element.protein|floatformat:1}}</td>
+						<td>{{element.carbohydrates|floatformat:1}}</td>
+						<td>{{element.fat|floatformat:1}}</td>						
+						<td>{{element.quantity|floatformat:0}}</td>
+						<td>		
+							 <div class="pull-right">									 				
+								<button type="button" class="btn btn-secondary ">Add</button>	
+							</div>						
+						</td>
+					</tr>
+				
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

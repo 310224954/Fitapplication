@@ -1,0 +1,157 @@
+[
+	{
+		"Name":"Yogurt",
+		"Protein":4.6,
+		"Carbohydrates":5.8,
+		"Fat":3.0,
+		"Description":"Fermented  milk product, good for digestion system.",
+		"Quantity":100,
+		"Price":1.29,
+		"Food type":"7",
+		"Slug":"Yogurt"
+	},
+	{
+		"Name":"Potato",
+		"Protein":6.6,
+		"Carbohydrates":16.8,
+		"Fat":3.1,
+		"Description":"Wild potato species can be found throughout the Americas, from the United States to southern Chile. The potato was originally believed to have been domesticated by indigenous peoples of the Americas independently in multiple locations, but later genetic testing of the wide variety of cultivars and wild species traced a single origin for potatoes",
+		"Quantity":100,
+		"Price":0.3,
+		"Food type":"3",
+		"Slug":"Potato"
+	},
+	{
+		"Name":"Tomato",
+		"Protein":0.9,
+		"Carbohydrates":3.6,
+		"Fat":0.2,
+		"Description":"The tomato is the edible, often red, berry of the plant Solanum lycopersicum, commonly known as a tomato plant",
+		"Quantity":100,
+		"Price":0.7,
+		"Food type":"2",
+		"Slug":"Tomato"
+	},
+	{
+		"Name":"Beef",
+		"Protein":22.5,
+		"Carbohydrates":0,
+		"Fat":8.7,
+		"Description":"Cows meat.",
+		"Quantity":100,
+		"Price":3.00,
+		"Food type":"1",
+		"Slug":"Beef"
+	},
+	{
+		"Name":"Grapes",
+		"Protein":0.7,
+		"Carbohydrates":17.2,
+		"Fat":0.2,
+		"Description":"Grapes can be eaten fresh as table grapes or they can be used for making wine, jam, grape juice, jelly, grape seed extract, raisins, vinegar, and grape seed oil. Grapes are a non-climacteric type of fruit, generally occurring in clusters.",
+		"Quantity":100,
+		"Price":1.40,
+		"Food type":"2",
+		"Slug":"Grapes"
+	},
+		{
+		"Name":"Rice cakes",
+		"Protein":10.2,
+		"Carbohydrates":70.2,
+		"Fat":4.2,
+		"Description":"A rice cake may be any kind of food item made from rice that has been shaped, condensed, or otherwise combined into a single object that has also been sweetened. A wide variety of rice cakes exist in many different cultures in which rice is eaten, and are particularly prevalent in Asia. Common variations include cakes made with rice flour, those made from ground rice, and those made from whole grains of rice compressed together or combined with some other binding substance.",
+		"Quantity":100,
+		"Price":3.29,
+		"Food type":"6",
+		"Slug":"Rice_cakes"
+	},
+		{
+		"Name":"Peanut",
+		"Protein":26,
+		"Carbohydrates":14.2,
+		"Fat":50,
+		"Description":"The peanut, also known as the groundnut,goober (US), or monkey nut (UK), and taxonomically classified as Arachis hypogaea, is a legume crop grown mainly for its edible seeds. It is widely grown in the tropics and subtropics, being important to both small and large commercial producers. It is classified as both a grain legume and, due to its high oil content, an oil crop.",
+		"Quantity":100,
+		"Price":2.00,
+		"Food type":"3",
+		"Slug":"Peanut"
+	},
+		{
+		"Name":"Cottage cheese",
+		"Protein":11,
+		"Carbohydrates":0,
+		"Fat":6,
+		"Description":"Cottage cheese is a fresh cheese curd product with a mild flavor. In the past, it was known as 'curds and whey.'' It is not aged. It is made by draining the cheese, as opposed to pressing it - retaining some of the whey, keeping the curds loose.",
+		"Quantity":100,
+		"Price":1.40,
+		"Food type":"5",
+		"Slug":"Cottage_cheese"
+	},
+	{
+		"Name":"Bannana",
+		"Protein":5.3,
+		"Carbohydrates":28.0,
+		"Fat":1.4,
+		"Description":"Great source of carbohydrates, perfect for a snack around training time.",
+		"Quantity":180,
+		"Price":1.25,
+		"Food type":"2",
+		"Slug":"Bannana"
+	},
+	{
+		"Name":"Cacoa",
+		"Protein":23.1,
+		"Carbohydrates":10.5,
+		"Fat":21.7,
+		"Description":"Contain good quality of protein and some extra magnesium,andtaste is great of course!",
+		"Quantity":15,
+		"Price":0.3,
+		"Food type":"6",
+		"Slug":"Cacoa"
+	},
+	{
+		"Name":"Egg",
+		"Protein":35.6,
+		"Carbohydrates":11.0,
+		"Fat":31.4,
+		"Description":"Eggs contain perfect amino-acid profile and are rich if lecithin fat.",
+		"Quantity":40,
+		"Price":0.79,
+		"Food type":"7",
+		"Slug":"Egg"
+	},
+	{
+		"Name":"Salmon",
+		"Protein":19,
+		"Carbohydrates":0.0,
+		"Fat":16.0,
+		"Description":"Salmon is the common name for several species of ray-finned fish in the family Salmonidae. Other fish in the same family include trout, char, grayling and whitefish. Salmon are native to tributaries of the North Atlantic (genus Salmo) and Pacific Ocean (genus Oncorhynchus). Many species of salmon have been introduced into non-native environments such as the Great Lakes of North America and Patagonia in South America. Salmon are intensively farmed in many parts of the world.",
+		"Quantity":100,
+		"Price":5.99,
+		"Food type":"4",
+		"Slug":"Salmon"
+	},
+	{
+		"Name":"Shrimp",
+		"Protein":20.9,
+		"Carbohydrates":0,
+		"Fat":1.1,
+		"Description":"Shrimp are decapod crustaceans with elongated bodies and a primarily swimming mode of locomotion – most commonly Caridea and Dendrobranchiata. More narrow definitions may be restricted to Caridea, to smaller species of either group or to only the marine species. Under a broader definition, shrimp may be synonymous with prawn, covering stalk-eyed swimming crustaceans with long narrow muscular tails (abdomens), long whiskers (antennae), and slender legs.",
+		"Quantity":100,
+		"Price":8.99,
+		"Food type":"4",
+		"Slug":"Shrimp"
+	},
+	{
+		"Name":"Milk 3.2",
+		"Protein":3.0,
+		"Carbohydrates":4.0,
+		"Fat":3.2,
+		"Description":"Eggs contain perfect amino-acid profile and are rich if lecithin fat.",
+		"Quantity":100,
+		"Price":0.29,
+		"Food type":"7",
+		"Slug":"Milk_3.2"
+	}
+
+]

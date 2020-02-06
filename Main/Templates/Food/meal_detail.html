@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+
+{% block content %}
+	
+
+  	<div class="container">
+        {% if messages %}
+	        {% for msg in messages %}
+		        <div class="col-md-12">
+		            <center>
+		                {{msg}}
+		            </center>           
+		        </div>
+	        {% endfor %}
+        {% endif %}
+    </div>
+    </br>
+
+	<div class="post">
+        <h2>{{object.name|lower|capfirst}}</h2>
+        <br><br>       
+        <p>{{ object.description }}</p>
+        <button class="btn btn-secondary mr-1" type="submit">
+            <a class="Update-button" href="{% url 'desc_meal_update' object.pk %}">Edit description</a>
+        </button>
+        <br><br>
+    </div>
+    {{object.weight_as_list}}
+    <br>
+    {{object.ingredients_weights}}
+    <div class="container-fluid col-md-12">
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">           </th>
+                    <th scope="col">Ingredient name</th>
+                    <th scope="col">Ingredient weight</th>
+                    <th scope="col">           </th>           
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingredient in object.get_all_ingredients %}
+                    <tr>
+                        <td>
+                            <button type="button" class="btn btn-secondary">
+                                <a class="hyperlink-off" href="{% url 'remove_ingredient' pk=object.pk  name=ingredient.name %}">
+                                    Remove
+                                </a>
+                            </button>
+                        </td>   
+                        <td>{{ ingredient.name|lower|capfirst }}</td>                                        
+                        <td>
+                            {{ object.weight_as_list|index:forloop.counter0 }}
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary">
+                                <a class="hyperlink-off" href="{% url 'update_meal_quantity' object.pk forloop.counter0 %}">
+                                    Change quantity
+                                </a>
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+        <button class="btn btn-danger ml-1" type="submit">
+        <a class="Update-button" href="{% url 'meal_delete' object.pk %}">Delete</a>
+    </button>
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <a class="float-right hyperlink-off" href="{% url 'profile' %}">{{ post.author|lower|capfirst }}</a> 
+    <br>
+    <small class="text-muted float-right"> {{post.creation_date}} </small>
+
+    <div class="post">
+        <h2>{{ post.tittle }}</h2>
+        <br><br>       
+        <p>{{ post.post_intro|linebreaksbr }}</p>
+        <br><br>
+         <img class="rounded-circle account-img"  src="{{ post.image.url }}" alt="">
+        <br><br><br>
+        <p>{{ post.post_body|linebreaksbr }}</p>
+        <br><br><br>
+        <p>{{ post.post_summary|linebreaksbr }}</p>
+    </div>
+
+    <div class="text-muted float-right d-flex justify-content-between">
+        <p>Tags:&nbsp;&nbsp;</p>
+        {% for element in post.tag.all %}
+            <p>&nbsp;<a class="hyperlink-off" href="{% url 'prod_desc' pk=element.pk %}">{{ element.name }}</a>&nbsp;</p> 
+        {% endfor %}                       
+    </div>
+
+
+
+    <br><br><br><br><br>
+
+	<button class="btn btn-secondary mr-1" type="submit">
+		<a class="Update-button" href="{% url 'art_update' object.pk %}">Update</a>
+	</button>
+        <button class="btn btn-danger ml-1" type="submit">
+        <a class="Update-button" href="{% url 'art_delete' object.pk %}">Delete</a>
+    </button>
+
+{% endblock %}
+
+
+<!-- 
+# post.author
+# post.tittle
+# post.post_intro
+# post.post_body
+# post.post_summary
+# post.image
+# post.product_name
+# post.creation_date 
+-->

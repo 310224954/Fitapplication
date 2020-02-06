@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	
+	{% for element in obj %}
+		<h1> {{element.name|lower|capfirst}} </h1>	
+		<p> {{element.short_description}} </p> <!--How to render .short_description -->
+		<p> {{element.price |add:1.00}} </p>
+		<p> {{element.get_food_type_display}} </p>
+	{% endfor %}
+	<!--<h1> {{obj.name|lower|capfirst}} </h1>	
+	<p> {{obj.desc}} </p>
+	<p> {{obj.price |add:1.00}} </p>-->
+
+{% endblock %}

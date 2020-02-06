@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	<div class="content-section col-md-4 container-fluid">
+		<div class="media col-md-3">
+			<img class="rounded-circle account-img"  src="{{ request.user.profile.image.url }}" alt="">
+			<div class="media-body">
+				<h2 class="account-heading col-md-2 mx-2">{{ request.user.username }}</h2>
+				<p class="text-secondary col-md-2 mx-2"> {{ request.user.email }}</p>
+			</div>
+		</div>
+		<form method="POST" enctype="multipart/form-data">
+			<!--#enctyp needed without it wont be saving img path in back-end  -->
+			<!-- application/x-www-form-urlencoded by default -->
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class=border-bottom mb-4>Profile info</legend>
+					{{ user_form|crispy }}
+              		{{ profile_form|crispy }}			
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Update info</button>
+			</div>			
+		</form>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="container">
+		{% if messages %}
+		{% for msg in messages %}
+		<div class="col-md-12">
+			<center>
+				{{msg}}
+			</center>			
+		</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+	</br>
+	<div class="text-muted d-flex justify-content-between">
+
+			<p>&nbsp;<a class="hyperlink-off" href="{% url 'filter_food_table' 1 %}">Meat</a>&nbsp;</p>            
+            <p>&nbsp;<a class="hyperlink-off" href="{% url 'filter_food_table' 2 %}">Fruit</a>&nbsp;</p>
+            <p>&nbsp;<a class="hyperlink-off" href="{% url 'filter_food_table' 3 %}">Vegetable</a>&nbsp;</p>
+            <p>&nbsp;<a class="hyperlink-off" href="{% url 'filter_food_table' 4 %}">SeaFood</a>&nbsp;</p>
+            <p>&nbsp;<a class="hyperlink-off" href="{% url 'filter_food_table' 5 %}">Nuts</a>&nbsp;</p>
+            <p>&nbsp;<a class="hyperlink-off" href="{% url 'filter_food_table' 6 %}">Grains</a>&nbsp;</p>
+            <p>&nbsp;<a class="hyperlink-off" href="{% url 'filter_food_table' 7 %}">Diary</a>&nbsp;</p>
+                             
+    </div>
+
+	<table class="table table-striped table-dark">
+		<thead>
+			<tr>
+				<th scope="col">Product name</th>
+				<th scope="col">Proteins</th>
+				<th scope="col">Carbohydrates</th>
+				<th scope="col">Fat</th>
+				<th scope="col">Description</th>
+				<th scope="col">Quantity per portion</th>
+				<th scope="col">Price</th>
+				<th scope="col">Add</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for element in object %}
+				
+					<tr>
+						<td>
+							<a class="hyperlink-off" href="{% url 'prod_desc' pk=element.pk %}">{{ element.name|lower|capfirst }}</a>	
+						</td>
+						<td>{{element.protein}}</td>
+						<td>{{element.carbohydrates}}</td>
+						<td>{{element.fat}}</td>
+						<td>{{element.short_description}}</td>
+						<td>{{element.quantity}}</td>
+						<td>{{element.price}}</td>
+						<td>									 
+							<button type="button" class="btn btn-secondary">
+								<a class="hyperlink-off" href="{% url 'add_to_diet' element.pk %}">Add</a>
+							</button>													
+						</td>
+					</tr>
+				
+			{% endfor %}
+		</tbody>
+	</table>
+	{% if is_paginated %}
+
+		{% if page_obj.has_previous and  page_obj.paginator.num_pages > 2 %}
+			<a href="?page=1" class="hyperlink-off"><<</a>
+		{% endif %}
+
+		{% for num in page_obj.paginator.page_range %}
+
+			{% if  page_obj.number == num %}
+				<strong><u><a href="?page={{num}}" class="hyperlink-off">{{num}}</a></u></strong>
+			{% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
+				<a href="?page={{num}}" class="hyperlink-off">{{num}}</a>
+			{% endif %}
+
+		{% endfor %}
+
+		{% if page_obj.paginator.num_pages >= 3 and page_obj.number != page_obj.paginator.num_pages %}
+			<a class="hyperlink-off" href="?page={{page_obj.paginator.num_pages}}">>></a>
+		{% endif %}
+
+	{% endif %}
+
+{% endblock %}
