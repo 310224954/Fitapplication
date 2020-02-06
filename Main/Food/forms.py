@@ -86,14 +86,11 @@ class MealUpdateForm(forms.Form):
         model = Meals
         fields = ["description"]
 
-
-# class MealQuantityUpdate(forms.Form):
-#     ingredients_weights = ingredients_weights
-    
-
-#     class Meta: 
-#         model = Meals
-#         fields = ["Weight"]
+class MealQuantityUpdate(forms.Form):
+    Weight = forms.CharField(max_length=5)
+    class Meta: 
+        model = Meals
+        fields = ["Weight"]
 
 
 

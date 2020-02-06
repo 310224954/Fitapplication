@@ -26,9 +26,7 @@
         </button>
         <br><br>
     </div>
-    {{object.weight_as_list}}
-    <br>
-    {{object.ingredients_weights}}
+
     <div class="container-fluid col-md-12">
         <table class="table table-striped table-dark">
             <thead>
@@ -55,7 +53,7 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-secondary">
-                                <a class="hyperlink-off" href="{% url 'update_meal_quantity' object.pk forloop.counter0 %}">
+                                <a class="hyperlink-off" href="{% url 'update_meal_quantity' pk=object.pk index=forloop.counter0 %}">
                                     Change quantity
                                 </a>
                             </button>

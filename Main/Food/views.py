@@ -8,23 +8,14 @@ from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 
 
 from .models import Products ,Meals
-from .forms import ProductForm, MealCreationForm, MealUpdateForm
+from .forms import ProductForm, MealCreationForm, MealUpdateForm, MealQuantityUpdate
 
-# name
-# protein
-# carbohydrates
-# fat
-# description
-# quantity
-# price
-# date 
-# food_type 
 
 
 class ProductsTableView(ListView, SuccessMessageMixin):
     model = Products
     template_name = "Food/product_table.html"
-    context_object_name = "object" #by random it's object_list 
+    context_object_name = "object" #by default it's object_list 
     paginate_by = 10
     
     def get_context_data(self, **kwargs):      
@@ -212,14 +203,35 @@ def remove_ingredient(request, pk, name):
     meal.ingredient.remove(product)
     return redirect("meal_detail", pk=pk)
 
-
-class UpdateIngredientQuantity(UpdateView):
+class UpdateIngredientQuantity(FormView):
     model = Meals
     template_name = "Food/meal_quantity_update.html"
-    fields = ["ingredients_weights"]
     success_url = reverse_lazy("meal_table")
-    # form_class = MealQuantityUpdate
+    form_class = MealQuantityUpdate
 
+    def form_valid(self, form):
+        meal = Meals.objects.get(pk=self.kwargs['pk'])
+        ingredients_weights = meal.ingredients_weights
+        new_quantity = form.cleaned_data["Weight"] 
+        weight_to_be_changed = self.kwargs['index']
+        ingredients_weights = meal.ingredients_weights
+        coma_positions =[]
+
+        for i in range(len(ingredients_weights)):
+            if ingredients_weights[i] ==",":
+                coma_positions.append(i)
+
+        if weight_to_be_changed == 0:
+            ingredients_weights =  new_quantity + "," + ingredients_weights[coma_positions[weight_to_be_changed]+1:]
+        elif weight_to_be_changed == len(coma_positions):
+            ingredients_weights = ingredients_weights[:coma_positions[weight_to_be_changed-1]] + "," + new_quantity
+        else:
+            ingredients_weights = ingredients_weights[:coma_positions[weight_to_be_changed-1]] + "," + new_quantity +  ingredients_weights[coma_positions[weight_to_be_changed]:]
+
+        meal.ingredients_weights  = ingredients_weights
+        meal.save()   
+        
+        return redirect("meal_detail", pk=self.kwargs['pk'])
 
 
 

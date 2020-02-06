@@ -108,7 +108,11 @@ class Meals(models.Model):
 
     @property   
     def protein(self):
-        return self.ingredient.aggregate(Sum("protein"))["protein__sum"]
+        protein_sum =0
+        for i, ing in  enumerate(self.ingredient.all()):
+            protein_sum += ing.protein * int(self.ingredients_weights.split(",")[i]) / 100
+        return protein_sum
+        #return self.ingredient.aggregate(Sum("protein"))["protein__sum"]
         
     @property   
     def carbohydrates(self):

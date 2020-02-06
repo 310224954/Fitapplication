@@ -1,26 +1,19 @@
 {% extends 'base.html' %}
 {% load custom_tags %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-	<center>
-		<div class="content-section col-md-4">
-			
-			<form method="POST" class="new-form">
-				{% csrf_token %}
-				{{ object.weight_as_list }}
-				{{ ing_pk }}
-				{{ forloop.counter0 }}
-
-				<div class="col-md-8">
-					<input class="form-control" type="search" value="{{ object.weight_as_list|index:0 }}">
-				</div>
-
-				<br>
-				<div class="form-group">
-					<button class="btn btn-outline-info" type="submit">Save</button>
-					<a href="{% url 'meal_table' %}" class="btn btn-outline-info"> Back </a>
-				</div>			
-			</form>
-		</div>
-	</center>
+	<div class="content-section">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class=border-bottom mb-4>Add new product		
+					{{ form|crispy }} 
+				</legend>
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Save</button>
+			</div>			
+		</form>
+	</div>
 {% endblock %}
