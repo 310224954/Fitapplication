@@ -151,7 +151,8 @@ class MealDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if "admin" in str(self.request.user).lower():
             return True
         else: 
-            return False 
+            #return False 
+            return redirect("meal_detail", pk=self.kwargs['pk'])
 
 class MealDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Meals
@@ -222,7 +223,7 @@ class UpdateIngredientQuantity(FormView):
                 coma_positions.append(i)
 
         if weight_to_be_changed == 0:
-            ingredients_weights =  new_quantity + "," + ingredients_weights[coma_positions[weight_to_be_changed]+1:]
+            ingredients_weights =  new_quantity #+ "," + ingredients_weights[coma_positions[weight_to_be_changed]+1:]
         elif weight_to_be_changed == len(coma_positions):
             ingredients_weights = ingredients_weights[:coma_positions[weight_to_be_changed-1]] + "," + new_quantity
         else:

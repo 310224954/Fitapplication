@@ -22,18 +22,15 @@ from django.conf.urls.static import static
 
 
 
-from Home.views import home_view, contact_view, ciriculum_vitae_view,socai_media
+from Home.views import home_view, contact_view, ciriculum_vitae_view, socai_media
 
 urlpatterns = [
     path("admin/", admin.site.urls), 
-    path("", home_view, name="Home"),
+    path("", include("Home.urls")),
     path("contact/", contact_view),
     path("food/", include("Food.urls")),
     path("user/", include("User.urls")),
     path("articles/", include("Articles.urls")),
-    #path("food/",products_table_view),
-    #path("food/desc",product_view),
-    #path("food/add",add_product),
 ]
 
 if settings.DEBUG:

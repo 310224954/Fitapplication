@@ -19,6 +19,7 @@ urlpatterns = [
 	path("diet_plan/", DietView.as_view(), name="diet_plan"),
 	path("diet_plan/edit/<int:pk>/", ChangeDietQuantity.as_view(), name="edit_user_prod"),
 	path("diet_plan/delete/<int:pk>/", DeteProdFromDiet.as_view(), name="delete_user_prod"),
+
 	#Username password restart Url's
 	path("password_reset/", views.PasswordResetView.as_view(template_name="Users/password_reset.html"), name="password_reset"),
 	path("password_reset/done/", views.PasswordResetDoneView.as_view(template_name="Users/password_reset_done.html"), name="password_reset_done"),
